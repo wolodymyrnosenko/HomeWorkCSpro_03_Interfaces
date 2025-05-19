@@ -1,10 +1,12 @@
 ﻿using System;
+using HomeWorkCSpro_03_1_IOutPut_2_IMath;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace HomeWorkCSpro_03_1_IOutPut
+namespace HomeWorkCSpro_03_1_IOutPut_2_IMath_3_ISort
 {
-    public class MyArray : IOutput, IMath
+    public class MyArray : IOutput, IMath, ISort
     {
-        public int[] Array { get; set; }
+        private int[] Array { get; set; }
 
         public MyArray(int[] array)
         {
@@ -45,6 +47,26 @@ namespace HomeWorkCSpro_03_1_IOutPut
         public bool Search(int valueToSearch)
         {
             return Array.Contains(valueToSearch);
+        }
+
+        public void SortAsc()
+        {
+            System.Array.Sort(Array);
+        }
+
+        public void SortDesc()
+        {
+            //System.Array.Sort(Array);
+            SortAsc();
+            System.Array.Reverse(Array);
+        }
+
+        public void SortByParam(bool isAsc)
+        {
+            if (isAsc)
+                SortAsc();
+            else
+                SortDesc();
         }
     }
 }
